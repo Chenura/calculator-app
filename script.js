@@ -14,7 +14,14 @@ function deleteLast() {
 
 function calculate() {
     try {
-        display.value = eval(display.value);
+        let expression = display.value;
+
+        // Convert power operator ^
+        expression = expression.replace(/\^/g, "**");
+
+        // Evaluate safely
+        display.value = eval(expression);
+
     } catch {
         display.value = "Error";
     }
